@@ -6,6 +6,27 @@ function getComputerChoice(){
     else return "Scissor";
 }
 
+function clashResult(playerSelection, computerSelection){
+    if(playerSelection === computerSelection) return "t";
+    else if (playerSelection == "rock"){
+        if(computerSelection == "scissor") return "w"
+        else return "l"
+    }
+    else if (playerSelection == "scissor"){
+        if(computerSelection == "rock") return "l";
+        else return "w";
+    }
+    else{
+        if(computerSelection == "rock") return "w";
+        else return "l";
+    }
+}
+
+function message(result){
+    if (result == "t") return "Tie!";
+    else if(result == "w")
+}
+
 
 function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
@@ -26,18 +47,24 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function winMsg(playerSelection, computerSelection){
+    let result = playRound(playerSelection, computerSelection);
+    if (result == "Tie!") return 't';
+    else if (result.charAt(4) == 'w') return 'w';
+    else return 'l';
+}
+
 function game(){
     let pp = 0;
     let cp = 0;
     for(let i=0; i<5; ++i){
         let pS = prompt("Enter your move?");
         let cS = getComputerChoice();
-        let result = playRound(pS, cS);
-        if(result == "Tie!");
-        else if(result.charAt(4) == 'w') pp++;
-        else cp++;
+        if(winMsg(pS, cS) == 't');
+        else if(winMsg(pS, cS) == 'w')pp++;
+        else  cp++;
     }
-    if(pp > cp) return "you Win!";
+    if(pp > cp) return "Congratulations! you Win";
     else if(pp < cp) return "you Loose!";
     else return "It's a Tie!";
 }
